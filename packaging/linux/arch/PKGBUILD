@@ -1,6 +1,6 @@
 # Maintainer: Manuel Schneider  <manuelschneid3r at googles mail>
 pkgname=albert
-pkgver=0.6.1-nsk
+pkgver=0.6.1.nsk
 pkgrel=1
 pkgdesc="A DE agnostic omnilauncher."
 arch=('i686' 'x86_64')
@@ -14,14 +14,16 @@ replaces=()
 backup=()
 options=()
 install=
-source=(https://github.com/eriknelson/albert/archive/${pkgver}.tar.gz)
+source=(git+https://github.com/eriknelson/albert.git)
 noextract=()
-md5sums=('bfa4af4b105e2d3bfa0c70eaae43ffbe')
+md5sums=('SKIP')
+branch="dev/$pkgver"
 
 build() {
-  [[ -d "${srcdir}/${pkgname}-${pkgver}/build" ]]\
-    || mkdir -p "${srcdir}/${pkgname}-${pkgver}/build"
-  cd "${srcdir}/${pkgname}-${pkgver}/build"
+  echo "Attempting to checkout: $branch"
+  pushd $srcdir/$pkgname && git checkout $branch && popd
+  mkdir -p "${srcdir}/${pkgname}/build"
+  cd "${srcdir}/${pkgname}/build"
   cmake ".." \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release
@@ -29,7 +31,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}/build"
+  cd "${srcdir}/${pkgname}/build"
   make DESTDIR="$pkgdir/" install
 }
 
