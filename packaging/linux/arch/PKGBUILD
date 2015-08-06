@@ -1,10 +1,10 @@
 # Maintainer: Manuel Schneider  <manuelschneid3r at googles mail>
 pkgname=albert
-pkgver=0.6.1
+pkgver=0.6.1-nsk
 pkgrel=1
 pkgdesc="A DE agnostic omnilauncher."
 arch=('i686' 'x86_64')
-url="https://github.com/ManuelSchneid3r/albert"
+url="https://github.com/eriknelson/albert"
 license=('GPL')
 depends=('qt5-base' 'libx11' 'muparser' 'qt5-x11extras')
 makedepends=('cmake' 'qt5-base' 'qt5-tools')
@@ -14,7 +14,7 @@ replaces=()
 backup=()
 options=()
 install=
-source=(https://github.com/ManuelSchneid3r/albert/archive/${pkgver}.tar.gz)
+source=(https://github.com/eriknelson/albert/archive/${pkgver}.tar.gz)
 noextract=()
 md5sums=('bfa4af4b105e2d3bfa0c70eaae43ffbe')
 
